@@ -1,0 +1,32 @@
+@import url("style-slider-home.css");
+
+h1 {
+	margin-top: 70px;
+}
+
+.logo-nav-bar {
+	width: 15%;
+	/*z-index: 9999;*/
+}
+
+.navbar {
+	margin-bottom: 0px !important;
+}
+
+.slider-principal {
+	margin: 0px;
+	height: 450px;
+}
+
+.mask {
+	max-width: 100%;
+	max-height: 450px;
+}
+
+#mask img {
+	max-width: auto;
+}
+
+p {
+	max-width: 600px;
+}
