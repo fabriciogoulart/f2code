@@ -18,3 +18,46 @@ function grid(numbers) {
 
     return classes
 }
+
+debounce = function(func,wait,imediate){
+    var timeout;
+    return function(){
+        var context = this, args = arguments;
+        var later = function(){
+            timeout = null;
+            if(!imediate) func.apply(context, args);
+        };
+        var callNow = imediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if(callNow) func.apply(context,args)
+    };
+};
+
+(function () {
+/* EFEITOS DO SCROLL */
+var $target = $('.anime'),
+    animationClass = 'anime-start',
+    offset = $(window).height() * 3/4;
+
+function animeScroll() {
+    var documentTop = $(document).scrollTop();
+    
+    $target.each(function(){
+        var itemTop = $(this).offset().top;
+        if(documentTop > (itemTop - offset) ){
+            $(this).addClass(animationClass);
+        } else {
+            $(this).removeClass(animationClass);
+        }
+    })
+}
+
+animeScroll();
+
+$(document).scroll(debounce(function(){
+    animeScroll();
+    console.log('teste');
+},100));
+
+}());
